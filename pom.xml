@@ -58,6 +58,16 @@
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>4.0.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -65,6 +75,30 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb</groupId>
+				<artifactId>jaxb-maven-plugin</artifactId>
+				<version>4.0.8</version>
+				<executions>
+					<execution>
+						<id>generate-wsdl-sources</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<args>
+						<arg>-wsdl</arg>
+					</args>
+					<generatePackage>com.ncba.cis.soap.client</generatePackage>
+					<generateDirectory>${project.build.directory}/generated-sources/jaxb</generateDirectory>
+					<schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
+					<schemaIncludes>
+						<include>*.wsdl</include>
+					</schemaIncludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
