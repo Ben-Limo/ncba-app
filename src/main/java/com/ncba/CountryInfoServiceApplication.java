@@ -1,4 +1,4 @@
-package com.ncba.country_info_service;
+package com.ncba;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
