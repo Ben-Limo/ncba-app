@@ -1,9 +1,7 @@
 package com.ncba.services;
 
 import com.ncba.api.UpdateCountryRequest;
-import com.ncba.api.UserResponse;
 import com.ncba.cis.soap.client.CountryISOCodeResponse;
-import com.ncba.cis.soap.client.FullCountryInfo;
 import com.ncba.cis.soap.client.FullCountryInfoResponse;
 import com.ncba.cis.soap.client.TCountryInfo;
 import com.ncba.configs.SoapClient;
@@ -15,9 +13,6 @@ import com.ncba.repository.CountryInfoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 
 @Service
 public class CountryInfoServiceImpl {
@@ -46,7 +41,6 @@ public class CountryInfoServiceImpl {
             c.addLanguage(l);
         });
         CountryInfo saved = repository.save(c);
-        System.out.println("country id " + saved.getId());
         return t;
     }
 
